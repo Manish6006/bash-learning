@@ -88,3 +88,63 @@ done
 
 # Print the array without duplicates
 echo "Array without duplicates: ${!unique[@]}"
+
+
+
+
+# Original array
+arr=(3 5 1 8 4 2 3 1 8)
+
+# Create an associative array to track unique elements
+declare -A unique
+
+# Remove duplicates
+for i in "${arr[@]}"
+do
+    unique["$i"]=1
+done
+
+# Print the array without duplicates
+echo "Array without duplicates: ${!unique[@]}"
+
+############merge 2 array
+
+#!/bin/bash
+
+# First array
+arr1=(1 2 3)
+
+# Second array
+arr2=(4 5 6)
+
+merged_arr=("${arr2[@]}" "${arr1[@]}")
+
+echo "merged array: ${merged_arr[@]}"
+
+#!/bin/bash
+
+# Original array
+arr=(3 5 1 8 4 2 3 4 6 7 1 2 45 8 11 1 1 1)
+
+# Sort the array
+sorted_arr=($(printf "%s\n" "${arr[@]}" |sort -nr|uniq))
+
+# Print the sorted array
+echo "Sorted array: ${sorted_arr[@]}"
+
+#####intersection of 2 array
+arr1=(1 2 3)
+arr2=(4 3 1)
+intersection=()
+for item1 in ${arr1[@]}
+do
+        for item2 in ${arr2[@]}
+        do
+                if [[ ${item2} == ${item1} ]]
+                then
+                        intersection+=($item1)
+                fi
+        done
+done
+
+echo "intersection for an array--> ${intersection[@]}"
